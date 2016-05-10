@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
+use App\Http\Requests\UserEditFormRequest;
+use Illuminate\Support\Facades\Hash;
 
 class UserEditFormRequest extends Request
 {
@@ -27,9 +29,9 @@ class UserEditFormRequest extends Request
             'name' => 'required',
             'email'=> 'required',
             'role'=> 'required',
-            'password'=>'alpha_num|min:6|confirmed',
-            'password_confirmation'=>'alpha_num|min:6',
-
+            'password'=>'min:6|confirmed',
+            'password_confirmation'=>'min:6',
+            'phone' => 'required|numeric'
         ];
     }
 }

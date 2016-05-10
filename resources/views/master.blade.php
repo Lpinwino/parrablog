@@ -7,6 +7,7 @@
 	<link href="/css/roboto.min.css" rel="stylesheet">
 	<link href="{!! asset('css/bootstrap-material-design.min.css') !!}" rel="stylesheet">
 	<link href="{!! asset('css/ripples.min.css') !!}" rel="stylesheet">
+	<meta charset="utf-8">
 </head>
 <body>
 	@include('shared.navbar')

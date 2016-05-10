@@ -13,6 +13,16 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 {
     use Authenticatable, CanResetPassword;
     use EntrustUserTrait;
+
+      public function saveRoles($roles)
+    {
+        if(!empty($roles))
+        {
+            $this->roles()->sync($roles);
+        } else {
+            $this->roles()->detach();
+        }
+    }
     /**
      * The database table used by the model.
      *
@@ -25,7 +35,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      *
      * @var array
      */
-    protected $fillable = ['name', 'email', 'password'];
+    protected $fillable = ['name', 'email', 'password', 'picture'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -34,14 +44,8 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      */
     protected $hidden = ['password', 'remember_token'];
 
-    public function saveRoles($roles)
-    {
-        if(!empty($roles))
-        {
-            $this->roles()->sync($roles);
-        } else {
-            $this->roles()->detach();
-        }
-}
-
+  
+    public function events(){
+        return $this->hasMany('App\Event', 'user_id', 'id');
+    }
 }

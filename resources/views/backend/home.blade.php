@@ -54,8 +54,23 @@
 						</div>
 						<div class="list-group-separator"></div>
 
+
+
+						<div class="list-group-item">
+							<div class="row-action-primary">
+								<i class="mdi-file-folder"></i>
+							</div>
+							<div class="row-content">
+								<div class="action-secondary"><i class="mdi-material-info"></i></div>
+									<h4 class="list-group-item-heading">Manage events</h4>
+										<a href="/admin/eventslist" class="btn btn-default btn-raised" >All Events</a>
+										<a href="{{ action('excelController@actionImprimirEcel') }}" class="btn btn-default">Concentrado de Evento</a>
+									</div>
+								</div>
+								<div class="list-group-separator"></div>
 			</div>
 		</div>
 	</div>
 </div>
+
 @endsection

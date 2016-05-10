@@ -6,10 +6,11 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\User;
-use App\Role;
 use App\Http\Requests\UserEditFormRequest;
 use Illuminate\Support\Facades\Hash;
+use App\User;
+use App\Role;
+use Input;
 
 class UsersController extends Controller
 {
@@ -38,9 +39,43 @@ class UsersController extends Controller
 		if($password != "") {
 			$user->password = Hash::make($password);
 		}
+
+        $image = $this->saveImage($request);
+        if($image){
+        	$user->picture = $image;
+    	}
 		$user->save();
 		$user->saveRoles($request->get('role'));
 		return redirect(action('Admin\UsersController@edit', $user->id))->with('status', 'The user has been updated!');
 	}
+
+	public function saveImage($request)
+    {
+        if(!$request->hasFile('picture'))
+        {
+			return false;
+        }
+
+        $mime = $request->file('picture')->getMimeType();
+        $extension = strtolower($request->file('picture')->getClientOriginalExtension());
+        $fileName = uniqid().'.'.$extension;
+        $path = "files_uploaded";
+
+        switch ($mime)
+        {
+            case "image/jpeg":
+            case "image/png":
+                if ($request->file('picture')->isValid())
+                {
+                    $request->file('picture')->move($path, $fileName);
+                    return $fileName;
+                }
+                break;
+            default:
+                return false;
+        }
+    }
+
+
 
 }

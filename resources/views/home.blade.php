@@ -3,14 +3,12 @@
 @section('content')
 <div class="container">
 	<div class="row banner">
-		<div class="col-md-12">
+		<div class="col-ms-12">
 			<h1 class="text-center margin-top-100 editContent">
-				Red de Archivos!
+				<img src="http://tectijuana.edu.mx/wp-content/themes/fuente-tnm/images/header-sep.png" width="300" height="130" alt=""> TECNOLÓGICO NACIONAL DE MÉXICO
 			</h1>
-			<h3 class="text-center margin-top-100 editContent">Compartiendo archvos entre usuarios.</h3>
-				<div class="text-center">
-					<img src="http://huayra.conectarigualdad.gob.ar/sites/default/files/styles/medium/public/images/tutoriales/compartir.png?itok=eMWSwk1z" width="202" height="291" alt="">
-				</div>
+			<h3 class="text-center margin-top-100 editContent"><img src"" width="300">INSTITUTO TECNOLÓGICO DE TIJUANA</h3>
+			
 			</div>
 		</div>
 	</div>

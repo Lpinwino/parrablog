@@ -11,9 +11,34 @@
 |
 */
 
-Route::get('/home', 'PagesController@home');
+Route::get('/', 'PagesController@home');
+Route::get('/eventslist', 'EventsController@index');
+Route::get('/calendary', 'EventsController@calendary');
+Route::get('/event', 'EventsController@create');
+Route::post('/event', 'EventsController@store');
+Route::get('/event/{slug?}', 'EventsController@show');
+Route::get('/event/{slug?}/edit','EventsController@edit');
+Route::get('/event/{slug?}/delete','EventsController@destroy');
+Route::post('/event/{slug?}/edit','EventsController@update');
+Route::get('/event/{id}/change/{status}', 'EventsController@changeStatus');
+Route::get('/imprimirexcel', 'excelController@actionImprimirEcel');
+// Route::get('/eventslist', 'EventsController@index');
+// Route::get('/event/{slug?}', 'EventsController@show');
+// Route::get('/event/{slug?}/edit','EventsController@edit');
+// Route::get('/event/{slug?}/delete','EventsController@destroy');
+// Route::post('/event/{slug?}/edit','EventsController@update');
+// Route::get('/event/{id}/change/{status}', 'EventsController@changeStatus');
+
+Route::get('/event/json/all', 'EventsController@jsonAllEvents');
+
 Route::get('/about', 'PagesController@about');
 // Route::get('/contact', 'PageController@contact');
+Route::get('/user/directory', 'UsersController@directory');
+Route::get('/user/{id?}', 'UsersController@show');
+
+Route::get('/user/{id?}/edit','UsersController@edit');
+Route::post('/user/{id?}/edit','UsersController@update');
+
 Route::get('/contact', 'TicketsController@create');
 Route::post('/contact', 'TicketsController@store');
 Route::get('/tickets', 'TicketsController@index');
@@ -48,6 +73,13 @@ Route::post('posts/{id?}/edit','PostsController@update');
 Route::get('categories', 'CategoriesController@index');
 Route::get('categories/create', 'CategoriesController@create');
 Route::post('categories/create', 'CategoriesController@store');
+//events
+Route::get('/eventslist', 'EventsController@index');
+Route::get('/event/{slug?}', 'EventsController@show');
+Route::get('/event/{slug?}/edit','EventsController@edit');
+Route::get('/event/{slug?}/delete','EventsController@destroy');
+Route::post('/event/{slug?}/edit','EventsController@update');
+Route::get('/event/{id}/change/{status}', 'EventsController@changeStatus');
 
 
 });

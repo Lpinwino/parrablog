@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Role as Roles;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
@@ -21,7 +22,6 @@ class AuthController extends Controller
     */
 
     use AuthenticatesAndRegistersUsers;
-
     /**
      * Create a new authentication controller instance.
      *
@@ -55,10 +55,28 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $create = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+
+        
+        $create->roles()->attach(2);
+        $create->save();
+        return $create;
+    }
+
+    public function redirectPath()
+    {
+        if (property_exists($this, 'redirectPath')) {
+            return $this->redirectPath;
+        }
+        return property_exists($this, 'redirectTo') ? $this->redirectTo : '/';
+    }
+
+    public function loginPath()
+    {
+        return property_exists($this, 'loginPath') ? $this->loginPath : '/users/login';
     }
 }

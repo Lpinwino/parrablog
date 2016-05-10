@@ -8,14 +8,16 @@
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 		</button>
-		<a class="navbar-brand" href="#">Red Archivos</a>
+		 <img src="/images/logo_ITT1.png" alt="HTML5 Icon" width="60" height="60">
 	</div>
 	<!-- Navbar Right -->
 	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		<ul class="nav navbar-nav navbar-right">
-			<li class="active"><a href="/home">Home</a></li>
+			<li class="active"><a href="/">Home</a></li>
 			<li><a href="/about">About</a></li>
 			<li><a href="/contact">Contact</a></li>
+			<li><a href="/calendary">Events</a></li>
+			<li><a href="/user/directory">Directory</a></li>
 			<li class="dropdown">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Member <span class="caret"></span></a>
 				<ul class="dropdown-menu" role="menu">
@@ -23,6 +25,7 @@
 					@if(Auth::user()->hasRole('manager'))
 					<li><a href="/admin">Admin</a></li>
 					@endif
+					<li><a href="{{ url('user', Auth::user()->id) }}">Profile</a></li>
 					<li><a href="/users/logout">Logout</a></li>
 					@else
 

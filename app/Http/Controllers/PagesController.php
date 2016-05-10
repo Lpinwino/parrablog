@@ -23,6 +23,11 @@ class PagesController extends Controller
     {
         return view('tickets.create');
     } 
+        public function events()
+    {
+        return view('events.create');
+    } 
+
     /**
      * Display a listing of the resource.
      *
