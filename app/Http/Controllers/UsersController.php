@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserEditFormRequest;
 use App\User;
+use App\Event;
 use App\Role;
 use App\Post;
 use Hash;
@@ -20,6 +21,30 @@ class UsersController extends Controller{
         $this->middleware('auth');
         $this->user = $user;
 	}
+
+
+    public function director()
+    {
+    if(Auth::user()->hasRole('directivos'))
+        return view('backend.directivos');
+    else
+        return redirect('/');
+    }
+
+    public function directorUsuarios()
+    {
+        $users = User::all();
+        return view('director.historialusuarios', compact('users'));
+    } 
+
+    public function viewUser( $id ){
+    	if(User::find($id)){
+    		$events = Event::where('user_id', $id)->get();
+    		return view('director.eventoslista', compact('events'));
+    	}else{
+    		return 'no existe';
+    	}
+    }
 
 	public function directory(){
 		$users = User::all();

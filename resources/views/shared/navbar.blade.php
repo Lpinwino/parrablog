@@ -22,15 +22,16 @@
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Member <span class="caret"></span></a>
 				<ul class="dropdown-menu" role="menu">
 					@if (Auth::check())
-					@if(Auth::user()->hasRole('manager'))
-					<li><a href="/admin">Admin</a></li>
-					@endif
-					<li><a href="{{ url('user', Auth::user()->id) }}">Profile</a></li>
-					<li><a href="/users/logout">Logout</a></li>
+						@if(Auth::user()->hasRole('manager'))
+							<li><a href="/admin">Admin</a></li>
+						@elseif(Auth::user()->hasRole('directivos'))
+							<li><a href="/director">Director Panel</a></li>
+						@endif
+						<li><a href="{{ url('user', Auth::user()->id) }}">Profile</a></li>
+						<li><a href="/users/logout">Logout</a></li>
 					@else
-
-					<li><a href="/users/register">Register</a></li>
-					<li><a href="/users/login">Login</a></li>
+						<li><a href="/users/register">Register</a></li>
+						<li><a href="/users/login">Login</a></li>
 					@endif
 				</ul>
 			</li>

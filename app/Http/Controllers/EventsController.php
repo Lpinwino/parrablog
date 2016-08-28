@@ -11,6 +11,7 @@ use App\Event;
 use Carbon\Carbon;
 use Auth;
 use Hash;
+use Mail;
 
 class EventsController extends Controller
 {
@@ -88,7 +89,7 @@ class EventsController extends Controller
       //  exit;
      if($Event->checkAvailableTime($data['date_event'], $data['end_event'])==true){
         $Event->save();
-        return redirect('/eventslist')->with('status', 'Your Event has been created! its unique id is: '.$slug);
+        return redirect('/calendary')->with('status', 'Your Event has been created! its unique id is: '.$slug);
     }else{
         return view('events.create', array('event', $data))->withErrors(['messages' => 'There\'s an event on that hour, try to change it please']);
     }
@@ -245,5 +246,23 @@ class EventsController extends Controller
             default:
                 return false;
         }
+    }
+
+    public function revisionEvents(){
+        $todayEvents = Event::whereBetween('date_event', [ Carbon::today() , Carbon::tomorrow() ])->get();
+
+        if(!empty($todayEvents)){
+            //Enviar correos.
+            //Formar correo con blade. 
+            //Enviar correo a usuario o lista de usaurios de base de datos.
+            //view('emails.lista_eventos')->with('events', $todayEvents);
+            Mail::send("emails.lista_eventos", array('events' => $todayEvents), function($message){
+                $message->to('abraham.vazquez@tectijuana.edu.mx', 'Abraham Vazquez')
+                        ->bcc('hp_tanya@hotmail.com')
+                        ->subject('Eventos del dia de hoy');
+            });
+            return "Enviar correo";
+        }
+        return "No hay eventos";
     }
 }

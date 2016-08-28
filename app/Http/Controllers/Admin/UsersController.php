@@ -32,9 +32,12 @@ class UsersController extends Controller
 
 	public function update($id, UserEditFormRequest $request)
 	{
+
 		$user = User::whereId($id)->firstOrFail();
 		$user->name = $request->get('name');
 		$user->email = $request->get('email');
+		$user->phone = $request->get('phone');
+
 		$password = $request->get('password');
 		if($password != "") {
 			$user->password = Hash::make($password);
@@ -44,9 +47,13 @@ class UsersController extends Controller
         if($image){
         	$user->picture = $image;
     	}
-		$user->save();
-		$user->saveRoles($request->get('role'));
-		return redirect(action('Admin\UsersController@edit', $user->id))->with('status', 'The user has been updated!');
+
+		if($user->save()){
+			$user->saveRoles($request->get('role'));
+			return redirect(action('Admin\UsersController@edit', $user->id))->with('status', 'The user has been updated!');
+		}else {
+			return "buuu";
+		}
 	}
 
 	public function saveImage($request)

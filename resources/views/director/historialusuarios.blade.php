@@ -34,7 +34,7 @@
 				<tr>
 					<td>{!! $user->id !!}</td>
 					<td>
-						<a href="{!! action('Admin\UsersController@edit', $user->id) !!}">{!! $user->name !!} </a>
+						<a href="{!! action('UsersController@viewUser', $user->id) !!}">{!! $user->name !!} </a>
 					</td>
 					<td>{!! $user->email !!}</td>
 					<td>{!! $user->created_at !!}</td>

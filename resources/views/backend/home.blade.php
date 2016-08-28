@@ -11,7 +11,7 @@
 					</div>
 					<div class="row-content">
 						<div class="action-secondary"><i class="mdi-social-info"></i></div>
-						<h4 class="list-group-item-heading">Manage User</h4>
+						<h4 class="list-group-item-heading">Administrar Usuarios</h4>
 						<a href="/admin/users" class="btn btn-default btn-raised">All Users</a>
 					</div>
 				</div>
@@ -22,9 +22,9 @@
 					</div>
 					<div class="row-content">
 						<div class="action-secondary"><i class="mdi-material-info"></i></div>
-						<h4 class="list-group-item-heading">Manage Roles</h4>
-						<a href="/admin/roles" class="btn btn-default btn-raised">All Roles</a>
-						<a href="/admin/roles/create" class="btn btn-primarybtn-raised">Create A Role</a>
+						<h4 class="list-group-item-heading">Administrar Roles</h4>
+						<a href="/admin/roles" class="btn btn-default btn-raised">Todos los Roles</a>
+						<a href="/admin/roles/create" class="btn btn-primarybtn-raised">Crear un Rol</a>
 					</div>
 				</div>
 				<div class ="list-group-separator"></div>
@@ -34,10 +34,10 @@
 					</div>
 					<div class="row-content">
 						<div class="action-secondary"><i class="mdi-material-info"></i></div>
-						<h4 class="list-group-item-heading">Manage Posts</h4>
+						<h4 class="list-group-item-heading">Administrar Posts</h4>
 						<a href="/admin/posts" class="btn btn-default btn-ra\
 						ised">All Posts</a>
-						<a href="/admin/posts/create" class="btn btn-primarybtn-raised">Create A Post</a>
+						<a href="/admin/posts/create" class="btn btn-primarybtn-raised">Crear un Post</a>
 					</div>
 				</div>
 				<div class ="list-group-separator"></div>
@@ -47,8 +47,8 @@
 					</div>
 					<div class="row-content">
 						<div class="action-secondary"><i class="mdi-material-info"></i></div>
-							<h4 class="list-group-item-heading">Manage Categories</h4>
-								<a href="/admin/categories" class="btn btn-default btn-raised" >All Categories</a>
+							<h4 class="list-group-item-heading">Administrar Categorias</h4>
+								<a href="/admin/categories" class="btn btn-default btn-raised" >Todas las Categorias</a>
 								<a href="/admin/categories/create" class="btn btn-primary btn-raised">New Category</a>
 							</div>
 						</div>
@@ -62,7 +62,7 @@
 							</div>
 							<div class="row-content">
 								<div class="action-secondary"><i class="mdi-material-info"></i></div>
-									<h4 class="list-group-item-heading">Manage events</h4>
+									<h4 class="list-group-item-heading">Administrar Eventos</h4>
 										<a href="/admin/eventslist" class="btn btn-default btn-raised" >All Events</a>
 										<a href="{{ action('excelController@actionImprimirEcel') }}" class="btn btn-default">Concentrado de Evento</a>
 									</div>

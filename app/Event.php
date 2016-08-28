@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Event extends Model
 {
+	protected $table = 'events';
+
 	protected $fillable = [ 'user_id','title', 'concept', 'department', 'objetives', 'impact_studTeach', 'description' ,'date_event', 'end_event', 'teacherEnvol', 'picture'];
 
 	public function user(){

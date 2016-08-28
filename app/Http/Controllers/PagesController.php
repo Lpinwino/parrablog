@@ -28,6 +28,7 @@ class PagesController extends Controller
         return view('events.create');
     } 
 
+
     /**
      * Display a listing of the resource.
      *
